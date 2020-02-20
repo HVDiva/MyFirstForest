@@ -1,0 +1,51 @@
+﻿@model Forest.Data.Genre
+
+@{
+    ViewBag.Title = "GetGenre";
+}
+
+<h2>GetGenre</h2>
+
+<div>
+    <h4>Genre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@if (Model.Music.Count != 0)
+{
+    <tr>
+        <td></td>
+        <td colspan="3">
+            @Html.Partial("~/Views/Music/GetMusics.cshtml", Model.Music)
+        </td>
+    </tr>
+}

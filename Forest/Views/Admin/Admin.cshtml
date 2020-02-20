@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h1>Admin</h1>
+
+<h2>Music Admin</h2>
+
+<h3>
+    @Html.ActionLink("Update Music", "GetAllMusics", "Music") |
+    @Html.ActionLink("Add Music", "GetAllMusics", "Music") |
+    @Html.ActionLink("Delete Music", "GetAllMusics", "Music")
+</h3>
+
+<h2>User Admin</h2>
+
+<h3>
+    @Html.ActionLink("List Users", "GetUsers", "Admin") |
+    @Html.ActionLink("View Roles", "GetRoles", "Admin")
+    @Html.ActionLink("View User Roles", "GetRolesforUser", "Admin") |
+    @Html.ActionLink("Manage User Roles", "ManageUserRoles", "Admin")
+</h3>
+

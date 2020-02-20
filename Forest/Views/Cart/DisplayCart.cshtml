@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Forest.Models.CartMusic>
+
+@{
+    ViewBag.Title = "DisplayCart";
+}
+
+<h2>DisplayCart</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_track)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateReleased)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Artist_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_track)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReleased)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artist_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            <a href=
+               @Url.Action("RemoveFromCart", new { id = item.ID, Controller = "Cart" })>
+                <img src="~/Images/remove.jpg" alt="Remove From Cart" style="height:40px;width:40px" />
+            </a>|
+            <a href=
+               @Url.Action("IncreaseQuantity", new { id = item.ID, Controller = "Cart" })>
+                <img src="~/Images/increment.jpg" alt="Increment" style="height:40px;width:40px" />
+            </a> |
+            <a href=
+               @Url.Action("DecreaseQuantity", new { id = item.ID, Controller = "Cart" })>
+                <img src="~/Images/decrement.jpg" alt="Decrement" style="height:40px;width:40px" />
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Continue Shopping", "GetGenres",
+        new { Controller = "Genre"}) |
+    @Html.ActionLink("Check Out", "AddOrder",
+        new { Controller = "User", cart = Model})
+</p>
